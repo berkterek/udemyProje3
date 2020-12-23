@@ -9,7 +9,7 @@ namespace UdemyProje3.Movements
     {
         [SerializeField] Transform[] transforms;
         [SerializeField] float maxDistance = 0.3f;
-        [SerializeField] LayerMask layerMask;
+        [SerializeField] LayerMask layerMask;   
 
         bool _isGround;
         public bool IsGround => _isGround;
