@@ -14,6 +14,8 @@ namespace UdemyProje3.Movements
         Collider2D _collider;
         float _direction;
 
+        public bool IsRightDirection { get; private set; }
+
         private void Awake()
         {
             _collider = GetComponent<Collider2D>();
@@ -44,7 +46,16 @@ namespace UdemyProje3.Movements
 
         private float GetXPosition()
         {
-            return _direction == 1f ? _collider.bounds.max.x: _collider.bounds.min.x;
+            IsRightDirection = _direction == 1f; 
+            
+            if (IsRightDirection)
+            {
+                return _collider.bounds.max.x;
+            }
+            else
+            {
+                return _collider.bounds.min.x;
+            }
         }
     }
 }

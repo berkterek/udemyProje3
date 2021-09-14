@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UdemyProje3.Abstracts.Animations;
+﻿using UdemyProje3.Abstracts.Animations;
 using UdemyProje3.Abstracts.Combats;
 using UdemyProje3.Abstracts.Controllers;
 using UdemyProje3.Abstracts.Inputs;
@@ -35,7 +33,7 @@ namespace UdemyProje3.Controllers
             _animation = new CharacterAnimation(GetComponent<Animator>());
             _flip = new FlipWithTransform(this);
             _onGround = GetComponent<IOnGround>();
-            _jump = new Jump(GetComponent<Rigidbody2D>(),_onGround);
+            _jump = new JumpMulti(GetComponent<Rigidbody2D>(),_onGround);
             _health = GetComponent<IHealth>();
         }
 

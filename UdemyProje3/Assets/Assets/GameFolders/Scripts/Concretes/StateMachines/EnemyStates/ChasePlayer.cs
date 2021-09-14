@@ -39,6 +39,17 @@ namespace UdemyProje3.StateMachines.EnemyStates
         {
             if (_stopEdge.ReachEdge())
             {
+                if (_stopEdge.IsRightDirection && !_isPlayerRightSide.Invoke())
+                {
+                    ChaseAgain(-1.5f,-1f,1f);
+                    return;
+                }
+                else if(!_stopEdge.IsRightDirection && _isPlayerRightSide.Invoke())
+                {
+                    ChaseAgain(1.5f,1f,1f);
+                    return;
+                }
+                
                 _animation.MoveAnimation(0f);
                 return;
             }
@@ -53,8 +64,13 @@ namespace UdemyProje3.StateMachines.EnemyStates
                 _mover.Tick(-1.5f);
                 _flip.FlipCharacter(-1f);
             }
+        }
 
-            Debug.Log("Chase Player Tick");
+        private void ChaseAgain(float moveDirection, float flipDirection, float animationSpeed)
+        {
+            _mover.Tick(moveDirection);
+            _flip.FlipCharacter(flipDirection);
+            _animation.MoveAnimation(animationSpeed);
         }
     }
 }
