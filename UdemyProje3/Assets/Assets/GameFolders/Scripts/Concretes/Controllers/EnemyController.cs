@@ -70,8 +70,8 @@ namespace UdemyProje3.Controllers
             _stateMachine.AddTransition(chasePlayer, idle, () => DistanceFromMeToPlayer() > chaseDistance);
             _stateMachine.AddTransition(attack, chasePlayer, () => DistanceFromMeToPlayer() > attackDistance);
 
-            _stateMachine.AddAnyState(dead, () => health.IsDead);
             _stateMachine.AddAnyState(takeHit, () => takeHit.IsTakeHit);
+            _stateMachine.AddAnyState(dead, () => health.IsDead);
 
             _stateMachine.AddTransition(takeHit, chasePlayer, () => takeHit.IsTakeHit == false);
 
