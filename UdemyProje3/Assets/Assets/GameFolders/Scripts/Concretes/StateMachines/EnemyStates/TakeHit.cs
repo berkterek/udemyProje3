@@ -9,7 +9,7 @@ namespace UdemyProje3.StateMachines.EnemyStates
 {
     public class TakeHit : IState
     {
-        IMyAnimation _animation;
+        readonly IMyAnimation _animation;
 
         float _maxDelayTime = 0.3f;
         float _currentDelayTime = 0f;
@@ -25,6 +25,7 @@ namespace UdemyProje3.StateMachines.EnemyStates
         public void OnEnter()
         {
             IsTakeHit = true;
+            _animation.TakeHitAnimation();
         }
 
         public void OnExit()
@@ -38,7 +39,6 @@ namespace UdemyProje3.StateMachines.EnemyStates
 
             if (_currentDelayTime > _maxDelayTime && IsTakeHit)
             {
-                _animation.TakeHitAnimation();
                 IsTakeHit = false;
             }
 
@@ -46,4 +46,3 @@ namespace UdemyProje3.StateMachines.EnemyStates
         }
     }
 }
-
